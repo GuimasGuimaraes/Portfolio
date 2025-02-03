@@ -1,0 +1,260 @@
+
+/* Estilos padrão (Light Mode) */
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header,
+section,
+footer {
+    padding: 20px;
+}
+
+header {
+    background-color: #ffffff;
+    position: relative;
+}
+
+footer {
+    background-color: #ffffff;
+    text-align: center;
+}
+
+/* Dark Mode */
+body.dark {
+    background-color: #121212;
+    color: #f5f5f5;
+}
+
+header.dark {
+    background-color: #1f1f1f;
+}
+
+footer.dark {
+    background-color: #1f1f1f;
+}
+
+/* Estilo do botão de alternância */
+.theme-switcher {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.5);
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f8fa;
+    color: #24292e;
+}
+
+header {
+    background-color: #2d333b;
+    color: #ffffff;
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    background-color: #f0f0f0; 
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d1d5da; 
+    font-size: 1.1rem; 
+}
+
+.profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #e1e4e8;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    display: block;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #0366d6;
+    border-bottom: 2px solid #e1e4e8;
+    padding-bottom: 0.5rem;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #e1e4e8;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: #24292e;
+    font-weight: 600;
+}
+
+.card-description {
+    font-size: 1.1rem;
+    color: #586069;
+    line-height: 1.6;
+}
+
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.skill-item {
+    background-color: #f6f8fa;
+    padding: 0.8rem 1.2rem;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #e1e4e8;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #24292e;
+}
+
+.swiper-container {
+    padding: 30px 20px 50px;
+    width: 100%;
+    position: relative;
+    overflow: hidden; /* Limita o campo da div */
+}
+
+.swiper-wrapper {
+    display: flex;
+}
+
+.swiper-slide {
+
+    width: calc(100% - 40px);
+    margin: 0 20px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.video-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e1e4e8;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+video {
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    background: #000;
+    display: block;
+    margin: 0 auto;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    background: #9b9a9a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #0366d6;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.swiper-button-next {
+    right: 10px;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+.swiper-pagination {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .profile-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .swiper-slide {
+        width: calc(100% - 40px);
+        margin: 0 20px;
+    }
+
+    video {
+        min-height: 300px;
+    }
+
+    .skills-list {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}

@@ -7,236 +7,231 @@
     <title>Portfólio de Testes Automatizados</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Estilos padrão (Light Mode) */
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-            font-family: Arial, sans-serif;
+        :root {
+            --primary-color: #0D0D0D;
+            --secondary-color: #1E1E1E;
+            --accent-color: #8A2BE2;
+            --text-light: #EAEAEA;
+            --gradient-bg: linear-gradient(135deg, #0D0D0D 0%, #1E1E1E 100%);
+        }
+
+
+        * {
             margin: 0;
             padding: 0;
-        }
-
-        header,
-        section,
-        footer {
-            padding: 20px;
-        }
-
-        header {
-            background-color: #ffffff;
-            position: relative;
-        }
-
-        footer {
-            background-color: #ffffff;
-            text-align: center;
-        }
-
-        /* Dark Mode */
-        body.dark {
-            background-color: #121212;
-            color: #f5f5f5;
-        }
-
-        header.dark {
-            background-color: #1f1f1f;
-        }
-
-        footer.dark {
-            background-color: #1f1f1f;
-        }
-
-        /* Estilo do botão de alternância */
-        .theme-switcher {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
-
-        input[type="checkbox"] {
-            transform: scale(1.5);
+            box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f6f8fa;
-            color: #24292e;
+            background: var(--gradient-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         header {
-            background-color: #2d333b;
-            color: #ffffff;
             padding: 2rem 0;
             text-align: center;
-            box-shadow: 0 1px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .theme-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .container {
-            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 0;
+            padding: 2rem;
         }
 
         .profile-section {
             display: flex;
             align-items: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            background-color: #f0f0f0; 
+            gap: 3rem;
+            margin: 4rem 0;
+            background: rgba(255, 255, 255, 0.1);
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border: 1px solid #d1d5da; 
-            font-size: 1.1rem; 
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .profile-photo {
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
-            border: 5px solid #e1e4e8;
+            border: 5px solid var(--accent-color);
             object-fit: cover;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            background: #ffffff;
-            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
         .section-title {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: #0366d6;
-            border-bottom: 2px solid #e1e4e8;
-            padding-bottom: 0.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
         }
 
-        .card {
-            background-color: #ffffff;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            border: 1px solid #e1e4e8;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: var(--accent-color);
         }
 
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            color: #24292e;
-            font-weight: 600;
-        }
-
-        .card-description {
-            font-size: 1.1rem;
-            color: #586069;
-            line-height: 1.6;
-        }
-
-        .skills-list {
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 2rem 0;
         }
 
         .skill-item {
-            background-color: #f6f8fa;
-            padding: 0.8rem 1.2rem;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid #e1e4e8;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #24292e;
+            background: var(--secondary-color);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 600;
+        }
+
+        .skill-item i {
+            font-size: 1.2rem;
         }
 
         .swiper-container {
-            padding: 30px 20px 50px;
-            width: 100%;
-            position: relative;
-        }
-
-        .swiper-wrapper {
-            display: flex;
+            margin: 4rem 0;
+            padding: 2rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         .swiper-slide {
-
-            width: calc(100% - 40px);
-            margin: 0 20px;
-            height: auto;
-            display: flex;
-            justify-content: center;
+            padding: 1rem; /* Add padding to create space between the videos and the container */
         }
 
         .video-card {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e1e4e8;
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         video {
-            border-radius: 8px;
-            overflow: hidden;
             width: 100%;
-            height: auto;
-            background: #000;
-            display: block;
-            margin: 0 auto;
+            height: 500px;
+            object-fit: cover;
         }
 
-        .swiper-button-next,
-        .swiper-button-prev {
-            background: #9b9a9a;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            width: 40px;
-            height: 40px;
+        .dark-theme {
+            --primary-color: #0D0D0D;
+            --secondary-color: #1E1E1E;
+            --accent-color: #8A2BE2;
+            --text-light: #EAEAEA;
+            --gradient-bg: linear-gradient(135deg, #0D0D0D 0%, #1E1E1E 100%);
+        }
+
+
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-color);
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            color: #0366d6;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
         }
 
-        .swiper-button-next {
-            right: 10px;
-        }
-
-        .swiper-button-prev {
-            left: 10px;
-        }
-
-        .swiper-pagination {
-            position: relative !important;
-            bottom: auto !important;
-            left: auto !important;
-            transform: none !important;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .swiper-button-next::after,
-        .swiper-button-prev::after {
-            font-size: 1.2rem;
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         @media (max-width: 768px) {
@@ -246,156 +241,192 @@
             }
 
             .profile-photo {
-                width: 150px;
-                height: 150px;
-            }
-
-            .container {
-                width: 95%;
-            }
-
-            .swiper-slide {
-                width: calc(100% - 40px);
-                margin: 0 20px;
+                width: 200px;
+                height: 200px;
             }
 
             video {
-                min-height: 300px;
+                height: 300px;
             }
 
-            .skills-list {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            }
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Portfólio de Testes Automatizados</h1>
-        <button class="theme-switcher" id="theme-switcher">
-            🌙
-        </button>
+        <button class="theme-switcher" id="theme-switcher">🌙</button>
+        <div class="container">
+            <h1>Portfólio de Testes Automatizados</h1>
+        </div>
     </header>
 
-    <section class="container">
-        <div class="profile-section">
-            <!-- Substitua o src pelo caminho correto da sua foto -->
-            <img src="images/Foto perfil linkedin.jpg" alt="Sua Foto" class="profile-photo">
+    <main class="container">
+        <section class="profile-section">
+            <img src="images/Foto perfil linkedin.jpg" alt="Guilherme Guimarães" class="profile-photo">
             <div>
-                <h1 class="section-title">Guilherme Guimarães</h1>
-                <p class="card-description">Sou um profissional apaixonado por tecnologia e inovação, com experiência
-                    como Analista de Sistemas, atuando em banco de dados Oracle e desenvolvimento em PL/SQL. No meu dia
-                    a dia, interpreto códigos em Java, JavaScript, XML, e JSON, além de trabalhar com consultas
-                    SQL complexas para resolver desafios e garantir a eficiência de sistemas como Algar SOM, Algar COM,
-                    e Algar People.
-                    Atualmente, estou me aprofundando no universo da programação em Java e testes automatizados. Além disso, estou me preparando para a certificação AWS Cloud, pois acredito
-                    que a computação em nuvem é uma habilidade essencial no mercado atual.
-                    Sou uma pessoa dinâmica, organizada e orientada a resultados, sempre buscando soluções que agreguem
-                    valor aos negócios. Fora do ambiente profissional, sou entusiasta em praticar esportes e vejo na
-                    disciplina do esporte uma inspiração para minha jornada profissional.
-                    Estou aberto a conexões e oportunidades para aprender, compartilhar conhecimento e colaborar em
-                    projetos desafiadores na área de tecnologia.</p>
-            </div>
-        </div>
-    </section>
-
-    <div class="container">
-        <section>
-            <h2 class="section-title">Projetos</h2>
-            <div class="card">
-                <h3 class="card-title">Projeto 1: Testes Automatizados com testCafé</h3>
-                <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe perferendis corporis cumque, nihil iste mollitia nostrum odit quis odio. Fuga sint, nostrum ratione quia distinctio numquam nam ipsa rem magni!</p>
-            </div>
-            <div class="card">
-                <h3 class="card-title">Projeto 2: Testes Automatizados com Cucumber</h3>
-                <p class="card-description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum est unde a sed magni quis assumenda commodi officiis dicta, ea doloribus quo totam reiciendis tempora, impedit ipsa quisquam, et molestiae?.</p>
+                <h2 class="section-title">Guilherme Guimarães</h2>
+                <p class="profile-description">
+                    Especialista em testes automatizados com paixão por qualidade de software.
+                    Combinando habilidades técnicas em diversas ferramentas de automação com
+                    uma abordagem metódica para garantir a excelência em entrega de software.
+                </p>
             </div>
         </section>
 
         <section>
-            <h2 class="section-title">Habilidades</h2>
-            <div class="card">
-                <div class="skills-list">
-                    <div class="skill-item">TestCafe</div>
-                    <div class="skill-item">Cucumber</div>
-                    <div class="skill-item">Android Studio</div>
-                    <div class="skill-item">Fluxo XML</div>
-                    <div class="skill-item">PLSQL</div>
-                    <div class="skill-item">JavaScript</div>
-                    <div class="skill-item">Java</div>
-                    <div class="skill-item">Git</div>
+            <h2 class="section-title">Projetos Destacados</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <h3>Automação Web com TestCafe</h3>
+                    <p>Framework de automação completo com relatórios interativos e integração CI/CD</p>
+                    <div class="tech-stack">
+                        <span class="tech-item">TestCafe</span>
+                        <span class="tech-item">JavaScript</span>
+                        <span class="tech-item">GitLab CI</span>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <h3>BDD com Cucumber</h3>
+                    <p>Implementação de Behavior Driven Development para testes de aceitação</p>
+                    <div class="tech-stack">
+                        <span class="tech-item">Cucumber</span>
+                        <span class="tech-item">Java</span>
+                        <span class="tech-item">Selenium</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Habilidades Técnicas</h2>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <i class="fab fa-js"></i>
+                    JavaScript
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-java"></i>
+                    Java
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-database"></i>
+                    PL/SQL
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-robot"></i>
+                    TestCafe
                 </div>
             </div>
         </section>
 
-        <section>
-            <h2 class="section-title">Vídeos</h2>
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="card video-card">
-                            <h3 class="card-title">Teste trytestingthis.mp4</h3>
-                            <video controls>
-                                <source src="Videos/Teste trytestingthis.mp4" type="video/mp4">
-                                Seu navegador não suporta o vídeo.
-                            </video>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card video-card">
-                            <h3 class="card-title">Teste trytestingthis.mp4</h3>
-                            <video controls>
-                                <source src="Videos/Teste trytestingthis.mp4" type="video/mp4">
-                                Seu navegador não suporta o vídeo.
-                            </video>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card video-card">
-                            <h3 class="card-title">Teste trytestingthis.mp4</h3>
-                            <video controls>
-                                <source src="Videos/Teste trytestingthis.mp4" type="video/mp4">
-                                Seu navegador não suporta o vídeo.
-                            </video>
-                        </div>
+        <section class="swiper-container">
+            <h2 class="section-title">Demonstrações</h2>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="video-card">
+                        <video controls>
+                            <source src="Videos/Teste trytestingthis.mp4" type="video/mp4">
+                        </video>
                     </div>
                 </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
+                <div class="swiper-slide">
+                    <div class="video-card">
+                        <video controls>
+                            <source src="Videos/Teste trytestingthis.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="video-card">
+                        <video controls>
+                            <source src="Videos/Teste trytestingthis.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
             </div>
+            <div class="swiper-pagination"></div>
         </section>
+
+    </main>
+
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
     </div>
 
     <script>
-        var swiper = new Swiper('.swiper-container', {
+        // Scroll Animation
+        const scrollElements = document.querySelectorAll('.project-card, .profile-section');
+        const elementInView = (el) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return elementTop <= (window.innerHeight * 0.75);
+        };
+
+        const displayScrollElement = (element) => {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el)) {
+                    displayScrollElement(el);
+                }
+            });
+        };
+
+        // Scroll to Top
+        const scrollTop = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTop.classList.add('active');
+            } else {
+                scrollTop.classList.remove('active');
+            }
+            handleScrollAnimation();
+        });
+
+        scrollTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Initialize Swiper
+        new Swiper('.swiper-container', {
             loop: true,
-            slidesPerView: 1,
-            spaceBetween: 30,
-            centeredSlides: true,
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
             },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+            autoplay: {
+                delay: 5000,
             },
+            slidesPerView: 1,  // Exibe 1 vídeo por vez em telas pequenas
+            spaceBetween: 20,
             breakpoints: {
                 768: {
-                    slidesPerView: 1.2,
-                    spaceBetween: 40
+                    slidesPerView: 2, // Exibe 2 vídeos por vez em telas médias
+                },
+                1024: {
+                    slidesPerView: 3, // Exibe 3 vídeos por vez em telas grandes
                 }
             }
         });
 
-        // Alternar modo claro/escuro
-        const themeSwitcher = document.getElementById('theme-switcher');
-        themeSwitcher.addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-            document.querySelector('header').classList.toggle('dark');
-            document.querySelector('footer').classList.toggle('dark');
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-switcher');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            themeToggle.textContent = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+        });
+
+        // Initial animations
+        window.addEventListener('DOMContentLoaded', () => {
+            handleScrollAnimation();
         });
     </script>
 </body>
